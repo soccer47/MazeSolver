@@ -4,6 +4,8 @@
  * @version 03/04/2022
  */
 
+// Stevie K. Halprin
+// 22/3/2024
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -145,8 +147,18 @@ public class Maze {
      * @param col the int col val
      * @return boolean true/false
      */
+
+    // Checks if the cell with the given coordinates is a valid cell (a cell that can be explored)
     public boolean isValidCell(int row, int col) {
-        // TODO: Complete this function
+        // Returns false if the given coordinates are outside the maze
+        if (row < 0 || row >= numRows || col < 0 || col >= numCols) {
+            return false;
+        }
+        // Also returns false if the cell is a wall or has already been visited
+        if (getCell(row, col).isWall() || getCell(row, col).isExplored()) {
+            return false;
+        }
+        // If neither of the above statements are true, the cell is valid >> return true
         return true;
     }
 }
